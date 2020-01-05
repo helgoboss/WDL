@@ -5,7 +5,7 @@ project(wdl-eel2 LANGUAGES C)
 option(NOOP_MUTEXES "Implements NSEEL_HOSTSTUB_EnterMutex and NSEEL_HOSTSTUB_LeaveMutex as no-op" OFF)
 
 # Main target
-add_library(wdl-eel2
+add_library(wdl-eel2 STATIC
     nseel-cfunc.c
     nseel-compiler.c
     nseel-caltab.c
