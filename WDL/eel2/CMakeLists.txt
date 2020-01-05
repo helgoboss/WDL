@@ -17,7 +17,7 @@ add_library(wdl-eel2 STATIC
 # pattern, see https://pabloariasal.github.io/2018/02/19/its-time-to-do-cmake-right/)
 target_include_directories(wdl-eel2
     PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>/..
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/..>
     $<INSTALL_INTERFACE:include>
     )
 if (MSVC)
