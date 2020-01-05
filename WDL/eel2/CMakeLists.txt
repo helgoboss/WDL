@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.10)
 project(wdl-eel2 LANGUAGES C)
 
 # Main target
-add_library(wdl-eel2
+add_library(wdl-eel2 STATIC
     nseel-cfunc.c
     nseel-compiler.c
     nseel-caltab.c
