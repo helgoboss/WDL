@@ -1,7 +1,8 @@
 # Support CMake version shipping with Ubuntu 18.04 LTS
 cmake_minimum_required(VERSION 3.10)
 
-project(wdl-eel2 LANGUAGES C)
+project(wdl-eel2 LANGUAGES C CXX)
+option(NOOP_MUTEXES "Implements NSEEL_HOSTSTUB_EnterMutex and NSEEL_HOSTSTUB_LeaveMutex as no-op" OFF)
 
 # Main target
 add_library(wdl-eel2
@@ -12,6 +13,8 @@ add_library(wdl-eel2
     nseel-lextab.c
     nseel-ram.c
     nseel-yylex.c
+    # This is just for defining NSEEL_HOSTSTUB_EnterMutex and NSEEL_HOSTSTUB_LeaveMutex as no-op if option set
+    $<$<BOOL:${NOOP_MUTEXES}>:loose_eel.cpp>
     )
 # Use generator syntax for INTERFACE-scoped includes to support usage of installed library (typical "Modern CMake"
 # pattern, see https://pabloariasal.github.io/2018/02/19/its-time-to-do-cmake-right/)
