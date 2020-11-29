@@ -456,12 +456,16 @@ static void *NSEEL_PProc_Stack_PeekTop(void *data, int data_size, compileContext
   return data;
 }
 
-#if defined(_MSC_VER) && _MSC_VER >= 1400
-static double __floor(double a) { return floor(a); }
-static double __ceil(double a) { return ceil(a); }
-#define floor __floor
-#define ceil __ceil
-#endif
+// Leads to "error C2169: '__floor': intrinsic function, cannot be defined" on GitHub Actions Virtual Environment
+// windows-2019 version 20201116.1 (Visual Studio Enterprise 2019	16.8.30711.63 with MSVC 14.28.29325)
+// See https://github.com/helgoboss/realearn/runs/1469905513?check_suite_focus=true#step:4:704
+
+//#if defined(_MSC_VER) && _MSC_VER >= 1400
+//static double __floor(double a) { return floor(a); }
+//static double __ceil(double a) { return ceil(a); }
+//#define floor __floor
+//#define ceil __ceil
+//#endif
 
 
 #ifdef NSEEL_EEL1_COMPAT_MODE
